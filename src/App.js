@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Home from './components/pages/Home';
+import Users from './components/pages/Users';
+import UserBlog from './components/pages/UserBlog';
+import UserPost from './components/pages/UserPost';
+import UserPostForm from './components/pages/FormPost';
+
+import "./styles/normalize.css";
+import "./styles/fontawesome.min.css";
+import "./styles/main.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/users/:userId" element={<UserBlog />} />
+      <Route path="/users/:userId/posts/:postId" element={<UserPost />} />
+      <Route path="/users/:userId/posts/new" element={<UserPostForm />} />
+    </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
